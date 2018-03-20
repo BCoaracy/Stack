@@ -16,7 +16,7 @@ public class Lista1 {
             return false;
         int i = auxP1.size();
 
-        while(i<0){
+        while(i>0){
             if(auxP1.peak()!=auxP2.peak()){
                 return false;
             }else{
@@ -132,7 +132,7 @@ public class Lista1 {
     
     public void descriptografia(Stack stack2){
         Stack s = new Stack();
-        s=stack2;
+        s=stack2.clone(stack2);
         while(!s.isEmpty()){
             System.out.print(s.peak());
             s.pop();

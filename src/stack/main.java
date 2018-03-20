@@ -77,7 +77,7 @@ public class main {
                 TEXTO = scaner5.nextLine();
                 pilha5 = list.criptografia(TEXTO);
                 list.descriptografia(pilha5);
-                scaner5.reset();
+                scaner5.close();
             break;
             case 0:
             break;
@@ -89,14 +89,16 @@ public class main {
                 }
             break;
             case 7:
+                scan.nextLine();
                 Stack pilha7 = new Stack();
-                pilha7.push("s");
-                pilha7.push("o");
-                pilha7.push("c");
-                pilha7.push("o");
-                pilha7.push("r");
-                pilha7.push("r");
-                pilha7.push("o");
+                Stack pilha7Aux = new Stack();
+                System.out.println("Informe um texto");
+                String texto = scan.nextLine();
+                
+                for(int i=0;i<texto.length();i++){
+                    pilha7.push(texto.charAt(i));
+                }
+                
                 pilha7.printStack();
                 pilha7=list2.inverterPilha(pilha7);
                 pilha7.printStack();

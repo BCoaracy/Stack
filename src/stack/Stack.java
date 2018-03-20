@@ -67,12 +67,27 @@ public class Stack {
         return this.stackPosition+1;
     }
     
+    public Stack clone(Stack stack){
+        Stack sClone = new Stack();
+        Stack sCloneAux = new Stack();
+        
+        while(!stack.isEmpty()){
+            sCloneAux.push(stack.popR());
+        }
+        while(!sCloneAux.isEmpty()){
+            sClone.push(sCloneAux.peak());
+            stack.push(sCloneAux.popR());
+        }
+        return sClone;
+    }
+    
     public void printStack(){
         Stack aux = new Stack();
-        aux=this;
+        aux=aux.clone(this);
         while(!aux.isEmpty()){
-            System.out.println(aux.peak());
+            System.out.print(aux.peak());
             aux.pop();
         }
+        System.out.println("");
     }
 }

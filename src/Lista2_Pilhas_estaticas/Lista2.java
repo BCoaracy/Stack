@@ -16,17 +16,16 @@ public class Lista2 {
     
     public Stack inverterPilha(Stack s){
         Stack sAuxiliar = new Stack();
+        Stack sInvertida = new Stack();
         
-        while(!s.isEmpty()){
-            sAuxiliar.push(s.peak());
-            s.pop();
-        }
+        
+        sAuxiliar=sAuxiliar.clone(s);
         while(!sAuxiliar.isEmpty()){
-            s.push(sAuxiliar.peak());
+            sInvertida.push(sAuxiliar.peak());
             sAuxiliar.pop();
         }
         
-        return s;
+        return sInvertida;
     }
     
     public void palindromo(){
@@ -43,13 +42,19 @@ public class Lista2 {
         Lista1 lista1= new Lista1();
         lista1.descriptografia(s);
         //Fim
+        while(!s.isEmpty()){
+            s.pop();
+        }
         for(int i=0; i < texto.length();i++){
             if(texto.charAt(i)==(' ')){
             } else {
                 s.push(texto.charAt(i));
             }
         }
-        sComparacao=inverterPilha(s);
+        
+        //sComparacao=s.clone(inverterPilha(s));
+        sComparacao=s.clone(s);
+        sComparacao=inverterPilha(sComparacao);
         if(lista1.equalStacks(s, sComparacao)){
             System.out.println("O texto é um palindromo!");
         }else{
